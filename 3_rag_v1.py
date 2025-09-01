@@ -1,3 +1,5 @@
+## This version of RAG loads, chuncks, embed the PDF at every run, so this will take a lot time to run.
+
 import os
 from dotenv import load_dotenv
 from langchain_community.document_loaders import PyPDFLoader
