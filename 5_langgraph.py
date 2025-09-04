@@ -7,12 +7,14 @@ from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 
 from langsmith import traceable
-from langchain_openai import ChatOpenAI
+from langchain_huggingface import HuggingFaceEndpointEmbeddings, ChatHuggingFace
+from langchain_perplexity import ChatPerplexity
 from langgraph.graph import StateGraph, START, END
+import os
 
 # ---------- Setup ----------
 load_dotenv()
-model = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+model = ChatPerplexity(model= 'sonar', api_key= os.getenv("PERPLEXITY_API_KEY"), temperature=0)
 
 # ---------- Structured schema & model ----------
 class EvaluationSchema(BaseModel):
